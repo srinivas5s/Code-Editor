@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+/* ==========================================================================
+   SIGNAL DESIGN SYSTEM
+   Single source of truth for all visual tokens in the application.
+   Never hardcode colors, spacing, or timing values outside this file.
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     COLOR — Background Layers
+     Three depths create hierarchy: base canvas, raised surfaces, floating elements
+     ------------------------------------------------------------------------ */
+  --color-bg-base: #0b0e14;
+  --color-bg-surface: #11151d;
+  --color-bg-elevated: #171c26;
+  --color-bg-overlay: #1c2230;
+
+  /* ------------------------------------------------------------------------
+     COLOR — Brand
+     ------------------------------------------------------------------------ */
+  --color-brand-primary: #5b6ef5;
+  --color-brand-primary-hover: #6f80f7;
+  --color-brand-primary-active: #4a5cd8;
+  --color-brand-primary-muted: rgba(91, 110, 245, 0.12);
+
+  /* ------------------------------------------------------------------------
+     COLOR — Signal Accent (reserved exclusively for live-collaboration cues:
+     cursors, presence, active sync. Never use for generic UI decoration —
+     this is what makes "something is happening right now" instantly readable.)
+     ------------------------------------------------------------------------ */
+  --color-signal: #39d0d8;
+  --color-signal-muted: rgba(57, 208, 216, 0.14);
+  --color-signal-glow: rgba(57, 208, 216, 0.35);
+
+  /* ------------------------------------------------------------------------
+     COLOR — Semantic (desaturated so they never compete with --color-signal)
+     ------------------------------------------------------------------------ */
+  --color-success: #4ade80;
+  --color-success-muted: rgba(74, 222, 128, 0.12);
+  --color-warning: #fbbf24;
+  --color-warning-muted: rgba(251, 191, 36, 0.12);
+  --color-error: #f87171;
+  --color-error-muted: rgba(248, 113, 113, 0.12);
+  --color-info: #60a5fa;
+  --color-info-muted: rgba(96, 165, 250, 0.12);
+
+  /* ------------------------------------------------------------------------
+     COLOR — Text
+     ------------------------------------------------------------------------ */
+  --color-text-primary: #e6e9f0;
+  --color-text-secondary: #9aa3b5;
+  --color-text-tertiary: #656e82;
+  --color-text-disabled: #454b5c;
+  --color-text-on-brand: #ffffff;
+
+  /* ------------------------------------------------------------------------
+     COLOR — Borders
+     ------------------------------------------------------------------------ */
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-default: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --color-border-focus: var(--color-brand-primary);
+
+  /* ------------------------------------------------------------------------
+     COLOR — Editor & Sidebar (reserved for the future Monaco/collaboration UI,
+     defined now so nothing built later needs to invent new tokens)
+     ------------------------------------------------------------------------ */
+  --color-editor-bg: #0d1017;
+  --color-editor-gutter: #11151d;
+  --color-sidebar-bg: #0e1119;
+  --color-sidebar-active: rgba(91, 110, 245, 0.14);
+
+  /* ------------------------------------------------------------------------
+     TYPOGRAPHY
+     ------------------------------------------------------------------------ */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.8125rem;  /* 13px */
+  --text-base: 0.9375rem;/* 15px */
+  --text-md: 1.0625rem;  /* 17px */
+  --text-lg: 1.25rem;    /* 20px */
+  --text-xl: 1.5rem;     /* 24px */
+  --text-2xl: 1.875rem;  /* 30px */
+  --text-3xl: 2.25rem;   /* 36px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* ------------------------------------------------------------------------
+     SPACING SCALE
+     ------------------------------------------------------------------------ */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* ------------------------------------------------------------------------
+     BORDER RADIUS
+     ------------------------------------------------------------------------ */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ------------------------------------------------------------------------
+     SHADOW SYSTEM
+     ------------------------------------------------------------------------ */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.32);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.48);
+  --shadow-glow-brand: 0 0 0 3px var(--color-brand-primary-muted);
+  --shadow-glow-signal: 0 0 24px var(--color-signal-glow);
+
+  /* ------------------------------------------------------------------------
+     TRANSITIONS & ANIMATION
+     ------------------------------------------------------------------------ */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --duration-slower: 480ms;
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ------------------------------------------------------------------------
+     OPACITY LEVELS
+     ------------------------------------------------------------------------ */
+  --opacity-disabled: 0.5;
+  --opacity-hover: 0.85;
+  --opacity-muted: 0.6;
+
+  /* ------------------------------------------------------------------------
+     GLASS EFFECT
+     ------------------------------------------------------------------------ */
+  --glass-bg: rgba(23, 28, 38, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 16px;
+
+  /* ------------------------------------------------------------------------
+     CONTAINER WIDTHS
+     ------------------------------------------------------------------------ */
+  --container-sm: 24rem;
+  --container-md: 32rem;
+  --container-lg: 64rem;
+  --container-xl: 80rem;
+
+  /* ------------------------------------------------------------------------
+     BREAKPOINTS (reference only — Tailwind handles actual media queries;
+     these exist for any JS that needs to read breakpoint values)
+     ------------------------------------------------------------------------ */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* ------------------------------------------------------------------------
+     Z-INDEX LAYERS
+     ------------------------------------------------------------------------ */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+}
+
+/* ==========================================================================
+   GLOBAL BASE STYLES
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+  margin: 0;
+}
+
+code, pre, kbd {
+  font-family: var(--font-mono);
+}
+
+/* ------------------------------------------------------------------------
+   SELECTION
+   ------------------------------------------------------------------------ */
+::selection {
+  background-color: var(--color-brand-primary-muted);
+  color: var(--color-text-primary);
+}
+
+/* ------------------------------------------------------------------------
+   FOCUS RING — visible, consistent, accessible across every interactive element
+   ------------------------------------------------------------------------ */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg-base), 0 0 0 4px var(--color-brand-primary);
+  border-radius: var(--radius-sm);
+}
+
+/* ------------------------------------------------------------------------
+   SCROLLBAR
+   ------------------------------------------------------------------------ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-strong);
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-tertiary);
+  background-clip: content-box;
+}
+
+/* ==========================================================================
+   GLOBAL UTILITY CLASSES
+   Composable, semantic helpers built on the token system above —
+   use these instead of repeating long Tailwind utility strings.
+   ========================================================================== */
+
+.surface-base {
+  background-color: var(--color-bg-base);
+}
+
+.surface-raised {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.surface-elevated {
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  box-shadow: var(--shadow-md);
+}
+
+.surface-glass {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
+
+.transition-standard {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: var(--duration-base);
+  transition-timing-function: var(--ease-standard);
+}
+
+.signal-pulse {
+  position: relative;
+}
+
+.signal-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 var(--color-signal-glow);
+  animation: signal-pulse-ring 2s var(--ease-out) infinite;
+  pointer-events: none;
+}
+
+@keyframes signal-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-signal-glow);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(57, 208, 216, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(57, 208, 216, 0);
+  }
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card-enter {
+  animation: card-enter var(--duration-slower) var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
