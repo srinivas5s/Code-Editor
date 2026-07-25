@@ -1,13 +1,13 @@
 function FullPageSpinner() {
-    return (
-        <div className="flex min-h-screen items-center justify-center">
-            <div
-                className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-blue-600"
-                role="status"
-                aria-label="Loading"
-            />
-        </div>
-    );
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-(--color-bg-base)">
+      <div
+        className="h-9 w-9 animate-spin rounded-full border-[3px] border-(--color-border-default) border-t-(--color-brand-primary)"
+        role="status"
+        aria-label="Loading"
+      />
+    </div>
+  );
 }
 
 export default FullPageSpinner;
